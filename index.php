@@ -126,6 +126,8 @@
                     } else {
                       if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false){
                         echo "Invalid email.";
+                        $req = "REGISTER:".base64_encode($_SERVER['HTTP_USER_AGENT']).";INVALID_EMAIL";
+                        echo $mysqli->query("INSERT INTO logs VALUES ('', '$username', '".date("Y/m/d")."', '".date("h:i:sa")."', '$ip', '$req', '".base64_encode($_SERVER['HTTP_USER_AGENT'])."')");
                       } else {
                       $cost = $settings['bcryptCost'];
                       $hashed_pass = password_hash($_POST['passwd'], PASSWORD_DEFAULT, ['cost' => $cost]);
@@ -139,6 +141,8 @@
                       }
                       if ($result->num_rows > 0) {
                         echo "Username/Email in use.";
+                        $req = "REGISTER:".base64_encode($_SERVER['HTTP_USER_AGENT']).";USERNAME/EMAIL_IN_USE";
+                        echo $mysqli->query("INSERT INTO logs VALUES ('', '$username', '".date("Y/m/d")."', '".date("h:i:sa")."', '$ip', '$req', '".base64_encode($_SERVER['HTTP_USER_AGENT'])."')");
                       } else {
                         $username = $_POST['username'];
                         $fname = $_POST['fname'];
@@ -149,6 +153,8 @@
                       		echo "Database error, check again later.";
                       	} else {
                       		echo "Registration email sent.";
+                          $req = "REGISTER:".base64_encode($_SERVER['HTTP_USER_AGENT']).";SUCCESSFUL_REGISTRATION";
+                          echo $mysqli->query("INSERT INTO logs VALUES ('', '$username', '".date("Y/m/d")."', '".date("h:i:sa")."', '$ip', '$req', '".base64_encode($_SERVER['HTTP_USER_AGENT'])."')");
                       	}
                       }}
                     }

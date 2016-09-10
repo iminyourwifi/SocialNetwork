@@ -99,12 +99,18 @@
                           $db_pass = $row['password'];
                           if(password_verify($_POST['passwd'], $db_pass)){
                             echo "Logged in";
+                            $req = "REGISTER:".base64_encode($_SERVER['HTTP_USER_AGENT']).";SUCCESSFUL_LOGIN";
+                            echo $mysqli->query("INSERT INTO logs VALUES ('', '$username', '".date("Y/m/d")."', '".date("h:i:sa")."', '$ip', '$req', '".base64_encode($_SERVER['HTTP_USER_AGENT'])."')");
                           } else {
                             echo "Incorrect password";
+                            $req = "REGISTER:".base64_encode($_SERVER['HTTP_USER_AGENT']).";WRONG_PASSWORD";
+                            echo $mysqli->query("INSERT INTO logs VALUES ('', '$username', '".date("Y/m/d")."', '".date("h:i:sa")."', '$ip', '$req', '".base64_encode($_SERVER['HTTP_USER_AGENT'])."')");
                           }
                         }
                       } else {
                         echo "Incorrect Login.";
+                        $req = "REGISTER:".base64_encode($_SERVER['HTTP_USER_AGENT']).";UNSUCCESSFUL_LOGIN";
+                        echo $mysqli->query("INSERT INTO logs VALUES ('', '$username', '".date("Y/m/d")."', '".date("h:i:sa")."', '$ip', '$req', '".base64_encode($_SERVER['HTTP_USER_AGENT'])."')");
                       }
                     } else {
                       // Go Go Gadget Username
@@ -118,12 +124,18 @@
                           $db_pass = $row['password'];
                           if(password_verify($_POST['passwd'], $db_pass)){
                             echo "Logged in";
+                            $req = "REGISTER:".base64_encode($_SERVER['HTTP_USER_AGENT']).";SUCCESSFUL_LOGIN";
+                            echo $mysqli->query("INSERT INTO logs VALUES ('', '$username', '".date("Y/m/d")."', '".date("h:i:sa")."', '$ip', '$req', '".base64_encode($_SERVER['HTTP_USER_AGENT'])."')");
                           } else {
                             echo "Incorrect password";
+                            $req = "REGISTER:".base64_encode($_SERVER['HTTP_USER_AGENT']).";WRONG_PASSWORD";
+                            echo $mysqli->query("INSERT INTO logs VALUES ('', '$username', '".date("Y/m/d")."', '".date("h:i:sa")."', '$ip', '$req', '".base64_encode($_SERVER['HTTP_USER_AGENT'])."')");
                           }
                         }
                       } else {
                         echo "Incorrect Login.";
+                        $req = "REGISTER:".base64_encode($_SERVER['HTTP_USER_AGENT']).";UNSUCCESSFUL_LOGIN";
+                        echo $mysqli->query("INSERT INTO logs VALUES ('', '$username', '".date("Y/m/d")."', '".date("h:i:sa")."', '$ip', '$req', '".base64_encode($_SERVER['HTTP_USER_AGENT'])."')");
                       }
                     }
                   }

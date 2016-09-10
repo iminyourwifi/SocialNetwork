@@ -22,6 +22,37 @@ $settings['Footer'] = '      <footer>
         </div>
 
       </footer>';
+// If you wish to change navbar colors:
+// navbar-inverse = orange
+// navbar-default = black
+$settings['Navbar'] = '<div class="navbar default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="../" class="navbar-brand"><?php echo $settings["Title"]; ?></a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="../help/">Help</a>
+        </li>
+        <li>
+          <a href="http://news.bootswatch.com">Blog</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>
+        <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li>
+      </ul>
+
+    </div>
+  </div>
+</div>';
 
 // Server settings
 date_default_timezone_set('Pacific/Auckland');
