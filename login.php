@@ -56,7 +56,7 @@
 
     <div class="container">
 
-      <center
+      <center>
       <div class="col-lg-6" style="padding-left: 5%;">
             <div class="well bs-component">
               <form class="form-horizontal" method="post">
